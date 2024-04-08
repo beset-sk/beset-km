@@ -66,7 +66,6 @@ import javax.mail.internet.*;
 import javax.mail.search.FlagTerm;
 import javax.mail.util.ByteArrayDataSource;
 import javax.naming.InitialContext;
-import javax.rmi.PortableRemoteObject;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -105,7 +104,12 @@ public class MailUtils {
 		try {
 			InitialContext initialContext = new InitialContext();
 			Object obj = initialContext.lookup(Config.JNDI_BASE + "mail/OpenKM");
-			mailSession = (Session) PortableRemoteObject.narrow(obj, Session.class);
+
+			if (obj instanceof Session) {
+				mailSession = (Session) obj;
+			} else {
+				throw new IllegalStateException("Unexpected Email Session object: " + obj);
+			}
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			mailSession = getDefaultSession();
