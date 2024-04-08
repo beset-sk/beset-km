@@ -21,14 +21,14 @@
 
 package com.openkm.util;
 
-import org.dozer.DozerBeanMapperSingletonWrapper;
-import org.dozer.Mapper;
+import com.github.dozermapper.core.Mapper;
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
 
 import java.util.*;
 import java.util.Map.Entry;
 
 public class MappingUtils {
-	private static final Mapper mapper = DozerBeanMapperSingletonWrapper.getInstance();
+	private static final Mapper mapper = DozerBeanMapperBuilder.buildDefault();;
 
 	public static Mapper getMapper() {
 		return mapper;
