@@ -852,11 +852,19 @@
     </dependency>
 
     <!-- jLAN -->
+<!--    <dependency>-->
+<!--      <groupId>org.alfresco</groupId>-->
+<!--      <artifactId>jlan</artifactId>-->
+<!--      <version>5.0.0</version>-->
+<!--    </dependency>-->
+    <!-- https://mvnrepository.com/artifact/org.filesys/jfileserver -->
     <dependency>
-      <groupId>org.alfresco</groupId>
-      <artifactId>jlan</artifactId>
-      <version>5.0.0</version>
+      <groupId>org.filesys</groupId>
+      <artifactId>jfileserver</artifactId>
+      <version>1.3.18</version>
     </dependency>
+
+
 
     <!-- Language detection -->
     <dependency>
