@@ -1,0 +1,13 @@
+
+docker run --name okm-mysql -e MYSQL_ROOT_PASSWORD=my_password -p 3306:3306 -d mysql
+
+docker exec -it okm-mysql bash
+
+mysql -h localhost -u root -pmy_password
+
+
+Create database (Zdroj> https://docs.openkm.com/kcenter/view/okm-6.3-com/installing-on-ubuntu-and-debian-(manual).html)
+
+CREATE DATABASE okmdb DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_bin;
+CREATE USER openkm@localhost IDENTIFIED BY 'password';
+GRANT ALL ON okmdb.* TO openkm@localhost WITH GRANT OPTION;
