@@ -1,0 +1,10 @@
+
+Base on
+* https://elegantsword.gitbooks.io/spring-boot-guide-reader/content/partix__how-to_guides/813convert_an_existing_application_to_spring_boot.html
+* https://dev.to/varshithv/migration-of-java-spring-boot-applications-from-weblogic-to-tomcat-server-jpd
+
+SpringBoot compatibility version matrix ( https://endoflife.date/spring-boot )
+
+For java 11 we choose SpringBoot ver. 2.7.18 (the last one compatible with java 11) 3.x need java 17+
+Gwt Web Toolkit for SpringBoot - https://github.com/levigo/gwt-spring-boot-starter
+    * follow Sample https://github.com/levigo/gwt-spring-boot-starter/tree/master/example
