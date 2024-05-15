@@ -86,5 +86,24 @@ public class UploadThrottleFilter implements Filter {
 
 			return chr;
 		}
+
+		@Override
+		public boolean isFinished() {
+			try {
+				return this.in.available() == 0;
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+		@Override
+		public boolean isReady() {
+			return true;
+		}
+
+		@Override
+		public void setReadListener(ReadListener readListener) {
+			throw new UnsupportedOperationException();
+		}
 	}
 }
