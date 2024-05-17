@@ -1,16 +1,22 @@
 package com.openkm.dao;
 
+import com.github.dozermapper.core.inject.Inject;
 import org.hibernate.HibernateException;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.NamingStrategy;
 import org.hibernate.cfg.Settings;
 //import org.hibernate.connection.ConnectionProvider;
-import org.hibernate.connection.ConnectionProviderFactory;
+//import org.hibernate.connection.ConnectionProviderFactory;
 import org.hibernate.dialect.Dialect;
+import org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.internal.util.ReflectHelper;
-import org.hibernate.service.jdbc.connections.spi.ConnectionProvider;
-import org.hibernate.tool.hbm2ddl.DatabaseMetadata;
+//import org.hibernate.service.jdbc.connections.internal.ConnectionProviderInitiator;
+//import org.hibernate.service.jdbc.connections.spi.ConnectionProvider;
+//import org.hibernate.tool.hbm2ddl.DatabaseMetadata;
 //import org.hibernate.util.ReflectHelper;
+import org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl;
+import org.hibernate.tool.schema.extract.spi.DatabaseInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,6 +40,7 @@ import java.util.Properties;
  */
 public class SchemaUpdate {
 	private static Logger log = LoggerFactory.getLogger(SchemaUpdate.class);
+
 	private ConnectionProvider connectionProvider;
 	private Configuration configuration;
 	private Dialect dialect;
@@ -50,7 +57,8 @@ public class SchemaUpdate {
 		Properties props = new Properties();
 		props.putAll(dialect.getDefaultProperties());
 		props.putAll(connectionProperties);
-		connectionProvider = ConnectionProviderFactory.newConnectionProvider(props);
+		connectionProvider = ConnectionProviderInitiator.INSTANCE.initiateService();
+//		connectionProvider = ConnectionProviderFactory.newConnectionProvider(props);
 		exceptions = new ArrayList<>();
 	}
 
@@ -131,7 +139,8 @@ public class SchemaUpdate {
 		exceptions.clear();
 
 		try {
-			DatabaseMetadata meta;
+//			DatabaseMetaData meta;
+			DatabaseInformation meta;
 
 			try {
 				log.info("fetching database metadata");
@@ -143,7 +152,7 @@ public class SchemaUpdate {
 					autoCommitWasEnabled = false;
 				}
 
-				meta = new DatabaseMetadata(connection, dialect);
+				meta = new DatabaseInformationImpl(connection, dialect);
 				stmt = connection.createStatement();
 			} catch (SQLException sqle) {
 				exceptions.add(sqle);
@@ -195,7 +204,8 @@ public class SchemaUpdate {
 				if (connection != null)
 					connection.close();
 				if (connectionProvider != null)
-					connectionProvider.close();
+//					connectionProvider.close();
+					connectionProvider.closeConnection();
 			} catch (Exception e) {
 				exceptions.add(e);
 				log.error("Error closing connection", e);

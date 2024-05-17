@@ -205,6 +205,43 @@
 
     <!-- Hibernate -->
     <!-- Spring Data JPA and Hibernate is strongly wired so we are going to add SprigDataJPA-->
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <!--          <version>3.6.10.Final</version>-->
+      <!--              <version>4.3.5.Final</version>-->
+      <version>5.6.15.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-search</artifactId>
+<!--      <version>3.4.2.Final</version>-->
+<!--      <version>4.3.0.Final</version>-->
+      <version>5.11.12.Final</version>
+        <!--      <exclusions>-->
+        <!--        <exclusion>-->
+        <!--          <groupId>javax.transaction</groupId>-->
+        <!--          <artifactId>jta</artifactId>-->
+        <!--        </exclusion>-->
+        <!--      </exclusions>-->
+    </dependency>
+
+
+
+    <!--        <dependency>-->
+    <!--          <groupId>org.hibernate</groupId>-->
+    <!--          <artifactId>hibernate-validator</artifactId>-->
+    <!--    &lt;!&ndash;      <version>4.2.0.Final</version>&ndash;&gt;-->
+    <!--                <version>6.2.5.Final</version>-->
+    <!--        </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.lucene</groupId>-->
+    <!--      <artifactId>lucene-queries</artifactId>-->
+    <!--&lt;!&ndash;      <version>3.1.0</version>&ndash;&gt;-->
+    <!--    </dependency>-->
+
 <!--    <dependency>-->
 <!--      <groupId>org.hibernate</groupId>-->
 <!--      <artifactId>hibernate-c3p0</artifactId>-->
@@ -241,13 +278,7 @@
 <!--    </dependency>-->
 
 
-            <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-core</artifactId>
-          <version>3.6.10.Final</version>
-<!--                <version>4.0.1.Final</version>-->
-<!--                <version>5.6.15.Final</version>-->
-            </dependency>
+
 
 <!--&lt;!&ndash;          <exclusions>&ndash;&gt;-->
 <!--&lt;!&ndash;            <exclusion>&ndash;&gt;-->
@@ -268,31 +299,7 @@
 <!--&lt;!&ndash;    &lt;!&ndash;      &lt;!&ndash;      <version>4.0.1.Final</version>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
 <!--&lt;!&ndash;                <version>5.6.15.Final</version>&ndash;&gt;-->
 <!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
-<!--        <dependency>-->
-<!--          <groupId>org.hibernate</groupId>-->
-<!--          <artifactId>hibernate-search</artifactId>-->
-<!--          <version>5.11.12.Final</version>-->
-<!--    &lt;!&ndash;&lt;!&ndash;      <version>3.4.2.Final</version>&ndash;&gt;&ndash;&gt;-->
-<!--    &lt;!&ndash;      &lt;!&ndash;      <version>4.0.0.Final</version>&ndash;&gt;&ndash;&gt;-->
-<!--    &lt;!&ndash;      &lt;!&ndash;      <version>5.9.3.Final</version>&ndash;&gt;&ndash;&gt;-->
-<!--    &lt;!&ndash;      <exclusions>&ndash;&gt;-->
-<!--    &lt;!&ndash;        <exclusion>&ndash;&gt;-->
-<!--    &lt;!&ndash;          <groupId>javax.transaction</groupId>&ndash;&gt;-->
-<!--    &lt;!&ndash;          <artifactId>jta</artifactId>&ndash;&gt;-->
-<!--    &lt;!&ndash;        </exclusion>&ndash;&gt;-->
-<!--    &lt;!&ndash;      </exclusions>&ndash;&gt;-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--          <groupId>org.hibernate</groupId>-->
-<!--          <artifactId>hibernate-validator</artifactId>-->
-<!--    &lt;!&ndash;      <version>4.2.0.Final</version>&ndash;&gt;-->
-<!--                <version>6.2.5.Final</version>-->
-<!--        </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.apache.lucene</groupId>-->
-    <!--      <artifactId>lucene-queries</artifactId>-->
-    <!--&lt;!&ndash;      <version>3.1.0</version>&ndash;&gt;-->
-    <!--    </dependency>-->
+
 
     <!-- Provided libraries -->
     <dependency>
