@@ -22,12 +22,14 @@
 package com.openkm.util;
 
 import com.google.common.io.Files;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.RandomAccessFileOrArray;
+import com.itextpdf.text.pdf.codec.TiffImage;
 import com.lowagie.text.*;
 import com.lowagie.text.html.simpleparser.HTMLWorker;
-import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
-import com.lowagie.text.pdf.RandomAccessFileOrArray;
-import com.lowagie.text.pdf.codec.TiffImage;
+//import com.lowagie.text.pdf.RandomAccessFileOrArray;
+//import com.lowagie.text.pdf.codec.TiffImage;
 import com.openkm.api.OKMDocument;
 import com.openkm.automation.AutomationException;
 import com.openkm.bean.ExecutionResult;
@@ -656,12 +658,12 @@ public class DocConverter {
 	 */
 	public void tiff2pdf(File input, File output) throws ConversionException {
 		RandomAccessFileOrArray ra = null;
-		Document doc = null;
+		com.itextpdf.text.Document doc = null;
 
 		try {
 			// Open PDF
-			doc = new Document();
-			PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(output));
+			doc = new com.itextpdf.text.Document();
+			com.itextpdf.text.pdf.PdfWriter writer = com.itextpdf.text.pdf.PdfWriter.getInstance(doc, new FileOutputStream(output));
 			PdfContentByte cb = writer.getDirectContent();
 			doc.open();
 			// int pages = 0;
@@ -671,7 +673,7 @@ public class DocConverter {
 			int comps = TiffImage.getNumberOfPages(ra);
 
 			for (int c = 0; c < comps; ++c) {
-				Image img = TiffImage.getTiffImage(ra, c + 1);
+				com.itextpdf.text.Image img = TiffImage.getTiffImage(ra, c + 1);
 
 				if (img != null) {
 					log.debug("tiff2pdf - page {}", c + 1);
@@ -689,7 +691,7 @@ public class DocConverter {
 			}
 		} catch (FileNotFoundException e) {
 			throw new ConversionException("File not found: " + e.getMessage(), e);
-		} catch (DocumentException e) {
+		} catch (com.itextpdf.text.DocumentException e) {
 			throw new ConversionException("Document exception: " + e.getMessage(), e);
 		} catch (IOException e) {
 			throw new ConversionException("IO exception: " + e.getMessage(), e);

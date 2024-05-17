@@ -210,10 +210,18 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <!--          <version>3.6.10.Final</version>-->
-      <!--              <version>4.3.5.Final</version>-->
+      <!--          <version>4.3.5.Final</version>-->
       <version>5.6.15.Final</version>
     </dependency>
-
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-ehcache</artifactId>
+      <!--      <version>3.6.10.Final</version>-->
+      <!--      <version>4.3.5.Final</version>-->
+      <version>5.6.15.Final</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-search</artifactId>
@@ -229,13 +237,33 @@
     </dependency>
 
 
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+            <dependency>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-validator</artifactId>
+        <!--      <version>4.2.0.Final</version>-->
+                    <version>6.2.5.Final</version>
+            </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-core</artifactId>
+      <version>5.5.5</version>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
+<dependency>
+    <groupId>org.apache.lucene</groupId>
+    <artifactId>lucene-analyzers-smartcn</artifactId>
+    <version>5.5.5</version>
+</dependency>
 
-    <!--        <dependency>-->
-    <!--          <groupId>org.hibernate</groupId>-->
-    <!--          <artifactId>hibernate-validator</artifactId>-->
-    <!--    &lt;!&ndash;      <version>4.2.0.Final</version>&ndash;&gt;-->
-    <!--                <version>6.2.5.Final</version>-->
-    <!--        </dependency>-->
+    <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common -->
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-common</artifactId>
+      <version>5.5.5</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
         <dependency>
           <groupId>org.apache.lucene</groupId>
@@ -243,6 +271,8 @@
     <!--      <version>3.1.0</version>-->
           <version>5.5.5</version>
         </dependency>
+
+
 
 <!--    <dependency>-->
 <!--      <groupId>org.hibernate</groupId>-->
@@ -255,52 +285,6 @@
 <!--      <artifactId>hibernate-tools</artifactId>-->
 <!--      <version>5.6.15.Final</version>-->
 <!--    </dependency>-->
-
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate</groupId>-->
-<!--      <artifactId>hibernate-entitymanager</artifactId>-->
-<!--      <version>5.6.15.Final</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate.javax.persistence</groupId>-->
-<!--      <artifactId>hibernate-jpa-2.1-api</artifactId>-->
-<!--      <version>1.0.2.Final</version>-->
-<!--    </dependency>-->
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core &ndash;&gt;-->
-<!--<dependency>-->
-<!--    <groupId>org.hibernate.orm</groupId>-->
-<!--    <artifactId>hibernate-core</artifactId>-->
-<!--    <version>6.0.0.Final</version>-->
-<!--</dependency>-->
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate</groupId>-->
-<!--      <artifactId>hibernate-search-orm</artifactId>-->
-<!--      <version>5.11.12.Final</version>-->
-<!--    </dependency>-->
-
-
-
-
-<!--&lt;!&ndash;          <exclusions>&ndash;&gt;-->
-<!--&lt;!&ndash;            <exclusion>&ndash;&gt;-->
-<!--&lt;!&ndash;              <groupId>javax.transaction</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;              <artifactId>jta</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;            </exclusion>&ndash;&gt;-->
-<!--&lt;!&ndash;          </exclusions>&ndash;&gt;-->
-<!--        </dependency>-->
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>org.springframework</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>spring-orm</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;      <version>6.0.11</version>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;          <groupId>org.hibernate</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;          <artifactId>hibernate-ehcache</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;    &lt;!&ndash;&lt;!&ndash;      <version>3.6.10.Final</version>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;    &lt;!&ndash;      &lt;!&ndash;      <version>4.0.1.Final</version>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                <version>5.6.15.Final</version>&ndash;&gt;-->
-<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
 
 
     <!-- Provided libraries -->
@@ -334,6 +318,23 @@
 <!--      <artifactId>gwt-spring-boot-starter</artifactId>-->
 <!--      <version>${gwt.springBoot.version}</version>-->
 <!--    </dependency>-->
+
+    <!-- iText -->
+    <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>itextpdf</artifactId>
+<!--      <version>5.2.0</version>-->
+      <version>5.5.13.3</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-asian -->
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>itext-asian</artifactId>
+      <version>5.2.0</version>
+    </dependency>
+
+
 
 
     <!-- GWT plugins -->
@@ -989,19 +990,7 @@
       <version>2.2</version>
     </dependency>
 
-    <!-- iText -->
-    <!--
-    <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>itextpdf</artifactId>
-      <version>5.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>itext-asian</artifactId>
-      <version>5.2.0</version>
-    </dependency>
-    -->
+
 
     <!-- Amazon SDK -->
     <dependency>

@@ -23,10 +23,13 @@ package com.openkm.analysis;
 
 import com.openkm.core.Config;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.SimpleAnalyzer;
-import org.apache.lucene.analysis.WhitespaceAnalyzer;
+//import org.apache.lucene.analysis.SimpleAnalyzer;
+//import org.apache.lucene.analysis.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.cjk.CJKAnalyzer;
+//import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
+import org.apache.lucene.analysis.core.SimpleAnalyzer;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -34,7 +37,7 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.queryParser.ParseException;
+//import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
@@ -59,11 +62,16 @@ public class SearchDemo {
 	};
 
 	private static Analyzer[] analyzers = {
-			new SimpleAnalyzer(Config.LUCENE_VERSION),
-			new StandardAnalyzer(Config.LUCENE_VERSION),
-			new CJKAnalyzer(Config.LUCENE_VERSION),
-			new SmartChineseAnalyzer(Config.LUCENE_VERSION),
-			new WhitespaceAnalyzer(Config.LUCENE_VERSION)
+//			new SimpleAnalyzer(Config.LUCENE_VERSION),
+		new SimpleAnalyzer(),
+//			new StandardAnalyzer(Config.LUCENE_VERSION),
+		new StandardAnalyzer(),
+//			new CJKAnalyzer(Config.LUCENE_VERSION),
+		new CJKAnalyzer(),
+//			new SmartChineseAnalyzer(Config.LUCENE_VERSION),
+		new SmartChineseAnalyzer(),
+//			new WhitespaceAnalyzer(Config.LUCENE_VERSION)
+		new WhitespaceAnalyzer()
 	};
 
 	public static void main(String args[]) throws Exception {
@@ -83,8 +91,9 @@ public class SearchDemo {
 	/**
 	 * Add documents
 	 */
-	private static void add(Directory index, Analyzer analyzer, String str) throws IOException, ParseException {
-		IndexWriterConfig config = new IndexWriterConfig(Config.LUCENE_VERSION, analyzer);
+	private static void add(Directory index, Analyzer analyzer, String str) throws IOException /*, ParseException */ {
+//		IndexWriterConfig config = new IndexWriterConfig(Config.LUCENE_VERSION, analyzer);
+		IndexWriterConfig config = new IndexWriterConfig(analyzer);
 		IndexWriter w = new IndexWriter(index, config);
 		Document doc = new Document();
 		doc.add(new Field(DOC_FIELD, str, Field.Store.YES, Field.Index.ANALYZED));
