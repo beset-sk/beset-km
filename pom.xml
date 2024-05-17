@@ -179,21 +179,120 @@
 
   <dependencies>
 <!-- START VD DEPENDENCIES -->
+    <!-- https://mvnrepository.com/artifact/org.jadice.gwt.spring/gwt-spring-boot-starter -->
     <dependency>
       <groupId>org.jadice.gwt.spring</groupId>
       <artifactId>gwt-spring-boot-starter</artifactId>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
       <scope>provided</scope>
     </dependency>
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.data</groupId>-->
+<!--      <artifactId>spring-data-jpa</artifactId>-->
+<!--    </dependency>-->
+
+    <!-- Hibernate -->
+    <!-- Spring Data JPA and Hibernate is strongly wired so we are going to add SprigDataJPA-->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-c3p0</artifactId>-->
+<!--      <version>5.6.15.Final</version>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate/hibernate-tools &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-tools</artifactId>-->
+<!--      <version>5.6.15.Final</version>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-entitymanager</artifactId>-->
+<!--      <version>5.6.15.Final</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate.javax.persistence</groupId>-->
+<!--      <artifactId>hibernate-jpa-2.1-api</artifactId>-->
+<!--      <version>1.0.2.Final</version>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core &ndash;&gt;-->
+<!--<dependency>-->
+<!--    <groupId>org.hibernate.orm</groupId>-->
+<!--    <artifactId>hibernate-core</artifactId>-->
+<!--    <version>6.0.0.Final</version>-->
+<!--</dependency>-->
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-search-orm</artifactId>-->
+<!--      <version>5.11.12.Final</version>-->
+<!--    </dependency>-->
+
+
+            <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>3.6.10.Final</version>
+<!--                <version>4.0.1.Final</version>-->
+<!--                <version>5.6.15.Final</version>-->
+            </dependency>
+
+<!--&lt;!&ndash;          <exclusions>&ndash;&gt;-->
+<!--&lt;!&ndash;            <exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;              <groupId>javax.transaction</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;              <artifactId>jta</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;            </exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;          </exclusions>&ndash;&gt;-->
+<!--        </dependency>-->
+<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <groupId>org.springframework</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;      <artifactId>spring-orm</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <version>6.0.11</version>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;          <groupId>org.hibernate</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;          <artifactId>hibernate-ehcache</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;&lt;!&ndash;      <version>3.6.10.Final</version>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;      &lt;!&ndash;      <version>4.0.1.Final</version>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <version>5.6.15.Final</version>&ndash;&gt;-->
+<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
+<!--        <dependency>-->
+<!--          <groupId>org.hibernate</groupId>-->
+<!--          <artifactId>hibernate-search</artifactId>-->
+<!--          <version>5.11.12.Final</version>-->
+<!--    &lt;!&ndash;&lt;!&ndash;      <version>3.4.2.Final</version>&ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;      &lt;!&ndash;      <version>4.0.0.Final</version>&ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;      &lt;!&ndash;      <version>5.9.3.Final</version>&ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;      <exclusions>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <exclusion>&ndash;&gt;-->
+<!--    &lt;!&ndash;          <groupId>javax.transaction</groupId>&ndash;&gt;-->
+<!--    &lt;!&ndash;          <artifactId>jta</artifactId>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </exclusion>&ndash;&gt;-->
+<!--    &lt;!&ndash;      </exclusions>&ndash;&gt;-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--          <groupId>org.hibernate</groupId>-->
+<!--          <artifactId>hibernate-validator</artifactId>-->
+<!--    &lt;!&ndash;      <version>4.2.0.Final</version>&ndash;&gt;-->
+<!--                <version>6.2.5.Final</version>-->
+<!--        </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.lucene</groupId>-->
+    <!--      <artifactId>lucene-queries</artifactId>-->
+    <!--&lt;!&ndash;      <version>3.1.0</version>&ndash;&gt;-->
+    <!--    </dependency>-->
 
     <!-- Provided libraries -->
     <dependency>
@@ -229,20 +328,59 @@
 
 
     <!-- GWT plugins -->
+    <!-- https://mvnrepository.com/artifact/com.allen-sauer.gwt.log/gwt-log -->
     <dependency>
       <groupId>com.allen-sauer.gwt.log</groupId>
       <artifactId>gwt-log</artifactId>
-      <version>3.3.1</version>
+      <version>3.3.2</version>
+<!--      <version>3.3.1</version>-->
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.gwt/gwt-incubator -->
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-incubator</artifactId>
       <version>2.1.0</version>
     </dependency>
+<!--    TODO : not found in maven REPO-->
     <dependency>
       <groupId>gwt-vl.sourceforge.net</groupId>
       <artifactId>gwt-vl</artifactId>
       <version>2.0b-without-hibernate</version>
+    </dependency>
+
+
+
+    <!-- JasperReports -->
+    <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports</artifactId>
+      <version>6.21.3</version>
+<!--      <version>6.4.3</version>-->
+      <exclusions>
+        <!-- Avoid java.lang.NoSuchMethodError: org.eclipse.jdt.internal.compiler.Compiler -->
+        <!-- See http://groups.google.com/group/google-web-toolkit/browse_thread/thread/49e20fb5185b34ce/75436f95e29dce85?hl=en -->
+        <exclusion>
+          <groupId>eclipse</groupId>
+          <artifactId>jdtcore</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.lucene</groupId>
+          <artifactId>lucene-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.lucene</groupId>
+          <artifactId>lucene-analyzers-common</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.lucene</groupId>
+          <artifactId>lucene-queryparser</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
 <!-- END VD Dependencies  -->
@@ -414,36 +552,7 @@
       <version>1.0</version>
     </dependency>
 
-    <!-- JasperReports -->
-    <dependency>
-      <groupId>net.sf.jasperreports</groupId>
-      <artifactId>jasperreports</artifactId>
-      <version>6.4.3</version>
-      <exclusions>
-        <!-- Avoid java.lang.NoSuchMethodError: org.eclipse.jdt.internal.compiler.Compiler -->
-        <!-- See http://groups.google.com/group/google-web-toolkit/browse_thread/thread/49e20fb5185b34ce/75436f95e29dce85?hl=en -->
-        <exclusion>
-          <groupId>eclipse</groupId>
-          <artifactId>jdtcore</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.lucene</groupId>
-          <artifactId>lucene-core</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.lucene</groupId>
-          <artifactId>lucene-analyzers-common</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.lucene</groupId>
-          <artifactId>lucene-queryparser</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-databind</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-all-minimal</artifactId>
@@ -474,53 +583,6 @@
       <groupId>org.jbpm.jbpm3</groupId>
       <artifactId>jbpm-identity</artifactId>
       <version>3.3.1.OKM</version>
-    </dependency>
-
-    <!-- Hibernate -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>3.6.10.Final</version>
-<!--      <version>4.0.1.Final</version>-->
-<!--      <version>5.6.15.Final</version>-->
-
-      <exclusions>
-        <exclusion>
-          <groupId>javax.transaction</groupId>
-          <artifactId>jta</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-ehcache</artifactId>
-      <version>3.6.10.Final</version>
-<!--      <version>4.0.1.Final</version>-->
-<!--      <version>5.6.15.Final</version>-->
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-search</artifactId>
-      <version>3.4.2.Final</version>
-<!--      <version>4.0.0.Final</version>-->
-<!--      <version>5.9.3.Final</version>-->
-      <exclusions>
-        <exclusion>
-          <groupId>javax.transaction</groupId>
-          <artifactId>jta</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>4.2.0.Final</version>
-<!--      <version>6.2.5.Final</version>-->
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-queries</artifactId>
-      <version>3.1.0</version>
     </dependency>
 
     <!-- BeanShell support -->

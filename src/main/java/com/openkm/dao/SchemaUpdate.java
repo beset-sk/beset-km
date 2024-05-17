@@ -4,11 +4,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.NamingStrategy;
 import org.hibernate.cfg.Settings;
-import org.hibernate.connection.ConnectionProvider;
+//import org.hibernate.connection.ConnectionProvider;
 import org.hibernate.connection.ConnectionProviderFactory;
 import org.hibernate.dialect.Dialect;
+import org.hibernate.internal.util.ReflectHelper;
+import org.hibernate.service.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.tool.hbm2ddl.DatabaseMetadata;
-import org.hibernate.util.ReflectHelper;
+//import org.hibernate.util.ReflectHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
