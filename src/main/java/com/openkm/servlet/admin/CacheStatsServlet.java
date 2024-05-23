@@ -25,7 +25,9 @@ import com.openkm.cache.CacheProvider;
 import com.openkm.util.UserActivity;
 import com.openkm.util.WebUtils;
 import net.sf.ehcache.Cache;
-import net.sf.ehcache.Statistics;
+//import net.sf.ehcache.Statistics;
+import net.sf.ehcache.statistics.StatisticsGateway;
+//import org.ehcache.core.statistics.CacheStatistics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +45,8 @@ import java.util.*;
 public class CacheStatsServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = LoggerFactory.getLogger(CacheStatsServlet.class);
-	static Map<String, Statistics> cacheStatistics = Collections.synchronizedMap(new TreeMap<>(Collator.getInstance()));
+//	static Map<String, Statistics> cacheStatistics = Collections.synchronizedMap(new TreeMap<>(Collator.getInstance()));
+	static Map<String, StatisticsGateway> cacheStatistics = Collections.synchronizedMap(new TreeMap<>(Collator.getInstance()));
 	private boolean statsEnabled = false;
 
 	@Override
@@ -92,9 +95,13 @@ public class CacheStatsServlet extends BaseServlet {
 		for (String name : CacheProvider.getInstance().getOkmCacheNames()) {
 			Cache cache = CacheProvider.getInstance().getCache(name);
 
-			if (!cache.isStatisticsEnabled()) {
-				cache.setStatisticsEnabled(true);
+			// Probably not needed anymore - Cache stat will not able to set via config anymore in future
+			if (!cache.getCacheConfiguration().getStatistics()) {
+				cache.getCacheConfiguration().setStatistics(true);
 			}
+//			if (!cache.isStatisticsEnabled()) {
+//				cache.setStatisticsEnabled(true);
+//			}
 
 			statsEnabled = true;
 		}
@@ -107,9 +114,13 @@ public class CacheStatsServlet extends BaseServlet {
 		for (String name : CacheProvider.getInstance().getOkmCacheNames()) {
 			Cache cache = CacheProvider.getInstance().getCache(name);
 
-			if (cache.isStatisticsEnabled()) {
-				cache.setStatisticsEnabled(false);
+			// Probably not needed anymore - Cache stat will not able to set via config anymore in future
+			if (cache.getCacheConfiguration().getStatistics()) {
+				cache.getCacheConfiguration().setStatistics(false);
 			}
+//			if (cache.isStatisticsEnabled()) {
+//				cache.setStatisticsEnabled(false);
+//			}
 
 			statsEnabled = false;
 		}
@@ -121,7 +132,9 @@ public class CacheStatsServlet extends BaseServlet {
 	private void clear(HttpServletRequest request, HttpServletResponse response) {
 		for (String name : CacheProvider.getInstance().getOkmCacheNames()) {
 			Cache cache = CacheProvider.getInstance().getCache(name);
-			cache.clearStatistics();
+			// Clear functionality is missing in high version
+//			cache.clearStatistics();
+			cache.getStatistics().dispose();
 		}
 
 		cacheStatistics.clear();
@@ -160,19 +173,22 @@ public class CacheStatsServlet extends BaseServlet {
 		List<Map<String, String>> cacheStats = new ArrayList<>();
 
 		for (String cache : cacheStatistics.keySet()) {
-			Statistics stats = cacheStatistics.get(cache);
+//			Statistics stats = cacheStatistics.get(cache);
+			StatisticsGateway stats = cacheStatistics.get(cache);
 
 			Map<String, String> stat = new HashMap<>();
 			stat.put("cache", cache);
-			stat.put("cacheHits", Long.toString(stats.getCacheHits()));
-			stat.put("cacheMisses", Long.toString(stats.getCacheMisses()));
-			stat.put("objectCount", Long.toString(stats.getObjectCount()));
-			stat.put("inMemoryHits", Long.toString(stats.getInMemoryHits()));
-			stat.put("inMemoryMisses", Long.toString(stats.getInMemoryMisses()));
-			stat.put("memoryStoreObjectCount", Long.toString(stats.getMemoryStoreObjectCount()));
-			stat.put("onDiskHits", Long.toString(stats.getOnDiskHits()));
-			stat.put("onDiskMisses", Long.toString(stats.getOnDiskMisses()));
-			stat.put("diskStoreObjectCount", Long.toString(stats.getDiskStoreObjectCount()));
+//			stat.put("cacheHits", Long.toString(stats.getCacheHits()));
+			stat.put("cacheHits", Long.toString(stats.cacheHitCount()));
+//			stat.put("cacheMisses", Long.toString(stats.getCacheMisses()));
+			stat.put("cacheMisses", Long.toString(stats.cacheMissCount()));
+//			stat.put("objectCount", Long.toString(stats.getObjectCount()));
+//			stat.put("inMemoryHits", Long.toString(stats.getInMemoryHits()));
+//			stat.put("inMemoryMisses", Long.toString(stats.getInMemoryMisses()));
+//			stat.put("memoryStoreObjectCount", Long.toString(stats.getMemoryStoreObjectCount()));
+//			stat.put("onDiskHits", Long.toString(stats.getOnDiskHits()));
+//			stat.put("onDiskMisses", Long.toString(stats.getOnDiskMisses()));
+//			stat.put("diskStoreObjectCount", Long.toString(stats.getDiskStoreObjectCount()));
 
 			cacheStats.add(stat);
 		}

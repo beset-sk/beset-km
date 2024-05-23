@@ -2,6 +2,7 @@ package com.openkm.dao;
 
 import com.github.dozermapper.core.inject.Inject;
 import org.hibernate.HibernateException;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategy;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.NamingStrategy;
 import org.hibernate.cfg.Settings;
@@ -91,8 +92,10 @@ public class SchemaUpdate {
 					} else if (arg.startsWith("--text")) {
 						doUpdate = false;
 					} else if (arg.startsWith("--naming=")) {
-						cfg.setNamingStrategy((NamingStrategy) ReflectHelper.classForName(
+						cfg.setImplicitNamingStrategy((ImplicitNamingStrategy) ReflectHelper.classForName(
 								arg.substring(9)).newInstance());
+//						cfg.setNamingStrategy((NamingStrategy) ReflectHelper.classForName(
+//								arg.substring(9)).newInstance());
 					} else if (arg.startsWith("--output=")) {
 						outFile = arg.substring(9);
 					}
@@ -167,7 +170,7 @@ public class SchemaUpdate {
 				outputFileWriter = new FileWriter(outputFile);
 			}
 
-			String[] createSQL = configuration.generateSchemaUpdateScript(dialect, meta);
+//			String[] createSQL = configuration.generateSchemaUpdateScript(dialect, meta);
 
 			for (final String sql : createSQL) {
 				try {
