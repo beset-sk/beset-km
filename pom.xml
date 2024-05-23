@@ -85,6 +85,21 @@
     <!-- Using this GWT version -->
 <!--    <gwt.version>2.8.2</gwt.version>-->
     <gwt.version>2.10.0</gwt.version>
+
+    <!-- Using Database JPA/Hibernate, lucenie -->
+<!--    <hibernate.version>3.6.10.Final</hibernate.version>-->
+<!--    <hibernate.version>4.3.5.Fina</hibernate.version>-->
+    <hibernate.version>5.6.15.Final</hibernate.version>
+<!--    <hibernate.search.version>3.4.2.Fina</hibernate.search.version>-->
+<!--    <hibernate.search.version>4.3.0.Final</hibernate.search.version>-->
+    <hibernate.search.version>5.11.12.Final</hibernate.search.version>
+<!--    <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>-->
+    <hibernate.validator.version>6.2.5.Final</hibernate.validator.version>
+<!--    <lucene.version>3.1.0</lucene.version>-->
+<!--    <lucene.version>3.6.2</lucene.version>-->
+    <lucene.version>4.10.4</lucene.version>
+<!--    <lucene.version>5.5.5</lucene.version>-->
+
     <!-- Apache CXF -->
 <!--    <cxf.version>3.2.6</cxf.version>-->
 <!--    <cxf.version>3.6.2</cxf.version>-->
@@ -209,25 +224,19 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <!--          <version>3.6.10.Final</version>-->
-      <!--          <version>4.3.5.Final</version>-->
-      <version>5.6.15.Final</version>
+      <version>${hibernate.version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-ehcache</artifactId>
-      <!--      <version>3.6.10.Final</version>-->
-      <!--      <version>4.3.5.Final</version>-->
-      <version>5.6.15.Final</version>
+      <version>${hibernate.version}</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-search</artifactId>
-<!--      <version>3.4.2.Final</version>-->
-<!--      <version>4.3.0.Final</version>-->
-      <version>5.11.12.Final</version>
+      <version>${hibernate.search.version}</version>
         <!--      <exclusions>-->
         <!--        <exclusion>-->
         <!--          <groupId>javax.transaction</groupId>-->
@@ -235,41 +244,39 @@
         <!--        </exclusion>-->
         <!--      </exclusions>-->
     </dependency>
-
-
-<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
-            <dependency>
-              <groupId>org.hibernate</groupId>
-              <artifactId>hibernate-validator</artifactId>
-        <!--      <version>4.2.0.Final</version>-->
-                    <version>6.2.5.Final</version>
-            </dependency>
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate.validator.version}</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
-      <version>5.5.5</version>
+      <version>${lucene.version}</version>
     </dependency>
-<!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
-<dependency>
-    <groupId>org.apache.lucene</groupId>
-    <artifactId>lucene-analyzers-smartcn</artifactId>
-    <version>5.5.5</version>
-</dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-smartcn</artifactId>
+      <version>${lucene.version}</version>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-common -->
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-analyzers-common</artifactId>
-      <version>5.5.5</version>
+      <version>${lucene.version}</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-core -->
         <dependency>
           <groupId>org.apache.lucene</groupId>
           <artifactId>lucene-queries</artifactId>
+          <version>${lucene.version}</version>
     <!--      <version>3.1.0</version>-->
-          <version>5.5.5</version>
+<!--          <version>5.5.5</version>-->
         </dependency>
 
 
@@ -1129,6 +1136,7 @@
       <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${springBoot.version}</version>
 				<executions>
 					<execution>
 						<goals>

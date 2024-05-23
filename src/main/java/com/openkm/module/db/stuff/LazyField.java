@@ -23,8 +23,9 @@ package com.openkm.module.db.stuff;
 
 import com.openkm.extractor.RegisteredExtractors;
 import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.document.AbstractField;
-import org.apache.lucene.document.Fieldable;
+//import org.apache.lucene.document.AbstractField;
+import org.apache.lucene.document.Field;
+//import org.apache.lucene.document.Fieldable;
 import org.hibernate.search.bridge.LuceneOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,14 +38,17 @@ import java.io.Reader;
  * @see http://community.jboss.org/wiki/HibernateSearchAndOfflineTextExtraction
  */
 @SuppressWarnings("serial")
-public class LazyField extends AbstractField implements Fieldable {
+//public class LazyField extends AbstractField implements Fieldable {
+public class LazyField extends Field {
 	private static Logger log = LoggerFactory.getLogger(LazyField.class);
 	PersistentFile persistentFile;
 	String content;
 
 	public LazyField(String name, PersistentFile persistentFile, LuceneOptions luceneOptions) {
-		super(name, luceneOptions.getStore(), luceneOptions.getIndex(), luceneOptions.getTermVector());
-		lazy = true;
+		super(name, "", luceneOptions.getStore(), luceneOptions.getIndex(), luceneOptions.getTermVector());
+
+//		super(name, luceneOptions.getStore(), luceneOptions.getIndex(), luceneOptions.getTermVector());
+//		lazy = true;
 		this.persistentFile = persistentFile;
 	}
 

@@ -31,13 +31,15 @@ import com.openkm.util.FormatUtil;
 import com.openkm.util.WebUtils;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Fieldable;
+//import org.apache.lucene.document.Fieldable;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.index.TermDocs;
-import org.apache.lucene.index.TermEnum;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.queryParser.QueryParser;
+//import org.apache.lucene.index.TermDocs;
+//import org.apache.lucene.index.TermEnum;
+//import org.apache.lucene.queryParser.ParseException;
+//import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.store.Directory;
@@ -46,7 +48,9 @@ import org.hibernate.search.FullTextQuery;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
 import org.hibernate.search.SearchFactory;
-import org.hibernate.search.reader.ReaderProvider;
+//import org.hibernate.search.reader.ReaderProvider;
+import org.hibernate.search.indexes.IndexReaderAccessor;
+import org.hibernate.search.indexes.spi.ReaderProvider;
 import org.hibernate.search.store.DirectoryProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,7 +109,8 @@ public class ListIndexesServlet extends BaseServlet {
 		boolean showTerms = WebUtils.getBoolean(request, "showTerms");
 		int id = WebUtils.getInt(request, "id", 0);
 		FullTextSession ftSession = null;
-		ReaderProvider rProv = null;
+//		ReaderProvider rProv = null;
+		IndexReaderAccessor rProv = null;
 		Session session = null;
 		IndexReader idx = null;
 		List<Map<String, String>> fields = new ArrayList<>();
@@ -114,7 +119,8 @@ public class ListIndexesServlet extends BaseServlet {
 			session = HibernateUtil.getSessionFactory().openSession();
 			ftSession = Search.getFullTextSession(session);
 			SearchFactory sFactory = ftSession.getSearchFactory();
-			rProv = sFactory.getReaderProvider();
+//			rProv = sFactory.getReaderProvider();
+			rProv = sFactory.getIndexReaderAccessor();
 
 			DirectoryProvider<Directory>[] dirProv = sFactory.getDirectoryProviders(NodeDocument.class);
 			idx = rProv.openReader(dirProv[0]);
@@ -186,7 +192,7 @@ public class ListIndexesServlet extends BaseServlet {
 	 */
 	@SuppressWarnings("unchecked")
 	private void searchLuceneDocuments(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
-			ParseException {
+		ParseException {
 		String exp = WebUtils.getString(request, "exp");
 		FullTextSession ftSession = null;
 		Session session = null;
@@ -197,8 +203,9 @@ public class ListIndexesServlet extends BaseServlet {
 			ftSession = Search.getFullTextSession(session);
 
 			if (exp != null && !exp.isEmpty()) {
-				Analyzer analyzer = new org.apache.lucene.analysis.WhitespaceAnalyzer(Config.LUCENE_VERSION);
-				QueryParser parser = new QueryParser(Config.LUCENE_VERSION, NodeBase.UUID_FIELD, analyzer);
+				Analyzer analyzer = new org.apache.lucene.analysis.core.WhitespaceAnalyzer(Config.LUCENE_VERSION);
+				QueryParser parser = new QueryParser(NodeBase.UUID_FIELD, analyzer);
+//				QueryParser parser = new QueryParser(Config.LUCENE_VERSION, NodeBase.UUID_FIELD, analyzer);
 				Query query = null;
 
 				if (FormatUtil.isValidUUID(exp)) {
