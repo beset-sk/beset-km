@@ -34,3 +34,6 @@ http://localhost:8080/
 
 cd /opt/tomcat/conf/
 nano tomcat-users.xml
+
+---- Deployment --
+We need copy OpenKM.xml file to $CATALINA_HOME/OpenKM.xml .

@@ -19,11 +19,20 @@
   <!-- Security configuration -->
   <security:authentication-manager alias="authenticationManager">
     <security:authentication-provider>
-      <security:password-encoder ref="md5"/>
+<!--      <security:password-encoder ref="md5"/>-->
+      <security:password-encoder ref="encoder"/>
+      <!-- see: https://stackoverflow.com/questions/45816441/password-change-in-spring-security-xml -->
+      <security:user-service>
+        <security:user name="admin" password="{4CkZQpDwWN6o5jaXylFaXT8D1f4sUi5Wb0QJ3YpBzWk=}2f0ce2db01eb75626d479013bf38b4ae" authorities="ROLE_USER" />
+      </security:user-service>
       <security:jdbc-user-service
         data-source-ref="dataSource"
         users-by-username-query="select usr_id, usr_password, 1 from OKM_USER where usr_id=? and usr_active='T'"
         authorities-by-username-query="select ur_user, ur_role from OKM_USER_ROLE where ur_user=?"/>
     </security:authentication-provider>
   </security:authentication-manager>
+
+  <beans:bean class="org.springframework.security.crypto.password.MessageDigestPasswordEncoder" id="encoder">
+    <beans:constructor-arg name="algorithm" value="MD5" />
+  </beans:bean>
 </beans:beans>
