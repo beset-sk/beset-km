@@ -35,9 +35,11 @@ import org.apache.lucene.store.FSDirectory;
 import org.hibernate.ScrollableResults;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.SearchFactory;
+import org.hibernate.search.indexes.IndexReaderAccessor;
+import org.hibernate.search.indexes.spi.ReaderProvider;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
-import org.hibernate.search.reader.ReaderProvider;
+//import org.hibernate.search.reader.ReaderProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +64,9 @@ public class IndexHelper {
 		// See if we need to rebuild the index during startup ...
 		FullTextEntityManager ftEm = Search.getFullTextEntityManager(entityManager);
 		SearchFactory searchFactory = ftEm.getSearchFactory();
-		ReaderProvider readerProvider = searchFactory.getReaderProvider();
+		IndexReaderAccessor brm = searchFactory.getIndexReaderAccessor();
+//		ReaderProvider readerProvider = searchFactory.getReaderProvider();
+		brm.open(searchFactory.getD)
 		IndexReader reader = readerProvider.openReader(searchFactory.getDirectoryProviders(NodeDocumentVersion.class)[0]);
 		int maxDoc = 0;
 

@@ -22,7 +22,8 @@
 package com.openkm.analysis;
 
 import com.openkm.core.Config;
-import org.apache.lucene.analysis.CharTokenizer;
+//import org.apache.lucene.analysis.CharTokenizer;
+import org.apache.lucene.analysis.util.CharTokenizer;
 
 import java.io.Reader;
 
@@ -32,18 +33,29 @@ import java.io.Reader;
  */
 public class FilenameTokenizer extends CharTokenizer {
 
-	/** Construct a new FilenameTokenizer. */
-	public FilenameTokenizer(Reader in) {
-		super(Config.LUCENE_VERSION, in);
+
+	@Override
+	protected int normalize(int c) {
+		return Character.toLowerCase(c);
 	}
 
 	@Override
-	protected boolean isTokenChar(char c) {
+	protected boolean isTokenChar(int c) {
 		return Character.isLetterOrDigit(c);
 	}
 
-	@Override
-	protected char normalize(char c) {
-		return Character.toLowerCase(c);
-	}
+//	/** Construct a new FilenameTokenizer. */
+//	public FilenameTokenizer(Reader in) {
+//		super(Config.LUCENE_VERSION, in);
+//	}
+//
+//	@Override
+//	protected boolean isTokenChar(char c) {
+//		return Character.isLetterOrDigit(c);
+//	}
+//
+//	@Override
+//	protected char normalize(char c) {
+//		return Character.toLowerCase(c);
+//	}
 }

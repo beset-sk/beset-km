@@ -23,9 +23,9 @@ package com.openkm.analysis;
 
 import com.openkm.core.Config;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.SimpleAnalyzer;
+//import org.apache.lucene.analysis.SimpleAnalyzer;
 import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.WhitespaceAnalyzer;
+//import org.apache.lucene.analysis.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.cjk.CJKAnalyzer;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -44,21 +44,21 @@ public class AnalyzerDemo {
 	private static Logger log = LoggerFactory.getLogger(AnalyzerDemo.class);
 	private static String[] strings = {"专项信息管理"};
 
-	private static Analyzer[] analyzers = {
-			new SimpleAnalyzer(Config.LUCENE_VERSION),
-			new StandardAnalyzer(Config.LUCENE_VERSION),
-			new CJKAnalyzer(Config.LUCENE_VERSION),
-			new SmartChineseAnalyzer(Config.LUCENE_VERSION),
-			new WhitespaceAnalyzer(Config.LUCENE_VERSION)
-	};
+//	private static Analyzer[] analyzers = {
+//			new SimpleAnalyzer(Config.LUCENE_VERSION),
+//			new StandardAnalyzer(Config.LUCENE_VERSION),
+//			new CJKAnalyzer(Config.LUCENE_VERSION),
+//			new SmartChineseAnalyzer(Config.LUCENE_VERSION),
+//			new WhitespaceAnalyzer(Config.LUCENE_VERSION)
+//	};
 
-	public static void main(String args[]) throws Exception {
-		for (String string : strings) {
-			for (Analyzer analyzer : analyzers) {
-				analyze(string, analyzer);
-			}
-		}
-	}
+//	public static void main(String args[]) throws Exception {
+//		for (String string : strings) {
+//			for (Analyzer analyzer : analyzers) {
+//				analyze(string, analyzer);
+//			}
+//		}
+//	}
 
 	/**
 	 * Analyze and display tokens

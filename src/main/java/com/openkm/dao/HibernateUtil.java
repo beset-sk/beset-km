@@ -38,11 +38,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.engine.SessionFactoryImplementor;
-import org.hibernate.hql.QueryTranslator;
-import org.hibernate.hql.QueryTranslatorFactory;
-import org.hibernate.hql.ast.ASTQueryTranslatorFactory;
+//import org.hibernate.engine.SessionFactoryImplementor;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+//import org.hibernate.hql.ast.ASTQueryTranslatorFactory;
+import org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory;
+import org.hibernate.hql.spi.FilterTranslator;
+//import org.hibernate.hql.QueryTranslator;
+import org.hibernate.hql.spi.QueryTranslator;
+//import org.hibernate.hql.QueryTranslatorFactory;
+import org.hibernate.hql.spi.QueryTranslatorFactory;
 import org.hibernate.jdbc.Work;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -291,7 +297,8 @@ public class HibernateUtil {
 	 * Commit transaction
 	 */
 	public static void commit(Transaction tx) {
-		if (tx != null && !tx.wasCommitted() && !tx.wasRolledBack()) {
+		TransactionStatus status = sessionFactory.getCurrentSession().getTransaction().getStatus();
+		if (tx != null && !(TransactionStatus.COMMITTED).equals(tx.getStatus()) && !(TransactionStatus.ROLLED_BACK).equals(tx.getStatus())) {
 			tx.commit();
 		}
 	}
@@ -300,7 +307,7 @@ public class HibernateUtil {
 	 * Rollback transaction
 	 */
 	public static void rollback(Transaction tx) {
-		if (tx != null && !tx.wasCommitted() && !tx.wasRolledBack()) {
+		if (tx != null && !(TransactionStatus.COMMITTED).equals(tx.getStatus()) && !(TransactionStatus.ROLLED_BACK).equals(tx.getStatus())) {
 			tx.rollback();
 		}
 	}
@@ -340,7 +347,7 @@ public class HibernateUtil {
 		if (hql != null && hql.trim().length() > 0) {
 			final QueryTranslatorFactory qtf = new ASTQueryTranslatorFactory();
 			final SessionFactoryImplementor sfi = (SessionFactoryImplementor) sessionFactory;
-			final QueryTranslator translator = qtf.createQueryTranslator(hql, hql, Collections.EMPTY_MAP, sfi);
+			final QueryTranslator translator = qtf.createFilterTranslator(hql, hql, Collections.EMPTY_MAP, sfi);
 			translator.compile(Collections.EMPTY_MAP, false);
 			return translator.getSQLString();
 		}
@@ -391,11 +398,13 @@ public class HibernateUtil {
 		String dbSchema = EnvironmentDetector.getUserHome() + "/schema.sql";
 		Configuration cfg = getConfiguration().configure();
 		cfg.setProperty("hibernate.dialect", dialect);
-		SchemaExport se = new SchemaExport(cfg);
+//		SchemaExport se = new SchemaExport(cfg);
+		SchemaExport se = new SchemaExport();
 		se.setOutputFile(dbSchema);
 		se.setDelimiter(";");
 		se.setFormat(false);
-		se.create(false, false);
+//		se.create(false, false);
+		// TODO : find how to rewrite it (SchemaExport)
 		log.info("Database Schema exported to {}", dbSchema);
 
 		String initialData = new File("").getAbsolutePath() + "/src/main/resources/default.sql";
